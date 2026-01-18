@@ -1,0 +1,46 @@
+name: Update Persona Assets
+run-name: Update
+on:
+  push:
+  schedule:
+    - cron: "30 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-persona-assets
+  cancel-in-progress: true
+
+env:
+  EMAIL: ${{ secrets.EMAIL }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl wget coreutils findutils
+
+      - name: Run updater
+        run: |
+          chmod +x ./update.sh
+          ./update.sh
+
+      - name: Detect changes
+        run: |
+          if git diff --quiet; then
+            echo "CHANGED=false" >> $GITHUB_ENV
+          else
+            echo "CHANGED=true" >> $GITHUB_ENV
+          fi
+
+      - uses: EndBug/add-and-commit@v9.1.0
+        if: env.CHANGED == 'true'
+        with:
+          message: "Updated persona assets"
