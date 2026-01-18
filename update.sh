@@ -16,9 +16,13 @@ PARALLEL_DOWNLOADS="${PARALLEL_DOWNLOADS:-8}"
 ROOT_DIR="$(pwd)"
 STATE_DIR="${ROOT_DIR}/.state"
 DATA_DIR="${ROOT_DIR}/data"
-IMAGES_DIR="${ROOT_DIR}/images"
+ASSETS_DIR="${ROOT_DIR}/assets"
+IMAGES_DIR="${ASSETS_DIR}/images"
 
-mkdir -p "${STATE_DIR}" "${DATA_DIR}" "${IMAGES_DIR}"
+EMOTE_KEY="persona_emote"
+PIECE_KEY="persona_piece"
+
+mkdir -p "${STATE_DIR}" "${DATA_DIR}" "${ASSETS_DIR}" "${IMAGES_DIR}"
 
 pf_post() {
   local path="${1}"
@@ -52,21 +56,11 @@ fi
 ENTITYTOKEN="$(echo "${ENTITYTOKENRESULT}" | jq -r '.data.EntityToken')"
 
 extract_items_array() {
-  jq -c '
-    if .data.Items then .data.Items
-    elif .items then .items
-    else []
-    end
-  '
+  jq -c 'if .data.Items then .data.Items elif .items then .items else [] end'
 }
 
 extract_total_count() {
-  jq -r '
-    if .data.Count then .data.Count
-    elif .meta.total then .meta.total
-    else 0
-    end
-  '
+  jq -r 'if .data.Count then .data.Count elif .meta.total then .meta.total else 0 end'
 }
 
 normalize_items() {
@@ -129,9 +123,9 @@ build_metadata() {
 diff_items() {
   local old_file="${1}"
   local new_file="${2}"
-  jq -n --argfile old "${old_file}" --argfile new "${new_file}" '
+  jq -n --slurpfile old "${old_file}" --slurpfile new "${new_file}" '
     def idx(a): a | map({key:.uuid, value:.}) | from_entries;
-    (idx($old) as $o | idx($new) as $n |
+    (idx($old[0]) as $o | idx($new[0]) as $n |
       {
         added:   ($n|keys - ($o|keys)),
         removed: (($o|keys) - ($n|keys)),
@@ -139,7 +133,7 @@ diff_items() {
           ($n|keys) as $keys
           | [ $keys[] | select($o[.] and ($o[.] != $n[.])) ]
         ),
-        counts: { old: ($old|length), new: ($new|length) }
+        counts: { old: ($old[0]|length), new: ($new[0]|length) }
       }
     )
   '
@@ -162,15 +156,15 @@ safe_filter_try() {
   pf_post "/Catalog/Search" "${payload}"
 }
 
-fetch_all_for_piece_type() {
-  local piece_type="${1}"
-  local out_dir="${2}"
-  local images_dir="${3}"
-  local base_filter="(contentType eq 'PersonaDurable' and displayProperties/pieceType eq '${piece_type}')"
+fetch_all() {
+  local key="${1}"
+  local base_filter="${2}"
+  local out_dir="${3}"
+  local images_dir="${4}"
 
   mkdir -p "${out_dir}" "${images_dir}"
 
-  local state_file="${STATE_DIR}/${piece_type}.json"
+  local state_file="${STATE_DIR}/${key}.json"
   if [ ! -f "${state_file}" ]; then
     echo '{}' > "${state_file}"
   fi
@@ -180,10 +174,9 @@ fetch_all_for_piece_type() {
   local last_seen_start
   last_seen_start="$(jq -r '.startDate // ""' "${state_file}")"
 
-  local quick_res=""
   local quick_ok="false"
-
   if [ -n "${last_seen_modified}" ]; then
+    local quick_res
     quick_res="$(safe_filter_try "${base_filter}" "LastModifiedDate gt '${last_seen_modified}'" "LastModifiedDate desc" 0 1 || true)"
     if echo "${quick_res}" | jq -e '(.data.Items // []) | length >= 0' >/dev/null 2>&1; then
       if [ "$(echo "${quick_res}" | jq -r '(.data.Items // []) | length')" -eq 0 ]; then
@@ -193,10 +186,11 @@ fetch_all_for_piece_type() {
   fi
 
   if [ "${quick_ok}" = "true" ] && [ -n "${last_seen_start}" ]; then
+    local quick_res
     quick_res="$(safe_filter_try "${base_filter}" "StartDate gt '${last_seen_start}'" "StartDate desc" 0 1 || true)"
     if echo "${quick_res}" | jq -e '(.data.Items // []) | length >= 0' >/dev/null 2>&1; then
       if [ "$(echo "${quick_res}" | jq -r '(.data.Items // []) | length')" -eq 0 ]; then
-        echo "No changes detected for ${piece_type}"
+        echo "No changes detected for ${key}"
         return 1
       fi
     fi
@@ -211,8 +205,10 @@ fetch_all_for_piece_type() {
   while [ "${skip}" -lt "${total}" ]; do
     local res
     res="$(safe_filter_try "${base_filter}" "" "title/neutral asc" "${skip}" "${COUNT}")"
+
     local items
     items="$(echo "${res}" | extract_items_array)"
+
     local page_file="${tmpdir}/page_${page}.json"
     echo "${items}" | normalize_items > "${page_file}"
 
@@ -234,13 +230,13 @@ fetch_all_for_piece_type() {
     page=$((page + 1))
   done
 
+  local items_file="${out_dir}/items.json"
   if ls "${tmpdir}"/page_*.json >/dev/null 2>&1; then
-    jq -s 'add' "${tmpdir}"/page_*.json > "${out_dir}/items.json"
+    jq -s 'add' "${tmpdir}"/page_*.json > "${items_file}"
   else
-    echo '[]' > "${out_dir}/items.json"
+    echo '[]' > "${items_file}"
   fi
 
-  local items_file="${out_dir}/items.json"
   local meta_file="${out_dir}/metadata.json"
   build_metadata < "${items_file}" > "${meta_file}"
 
@@ -267,7 +263,7 @@ fetch_all_for_piece_type() {
   if [ -n "${removed_uuids}" ]; then
     while IFS= read -r u; do
       [ -n "${u}" ] || continue
-      rm -f "${images_dir}/${u}.png" "${images_dir}/${u}.jpg" "${images_dir}/${u}.jpeg" 2>/dev/null || true
+      rm -f "${images_dir}/${u}.png" 2>/dev/null || true
     done <<< "${removed_uuids}"
   fi
 
@@ -276,41 +272,32 @@ fetch_all_for_piece_type() {
     | xargs -r -n2 -P "${PARALLEL_DOWNLOADS}" bash -lc '
         url="$0"
         uuid="$1"
-        out_png="'"${images_dir}"'/${uuid}.png"
-        out_jpg="'"${images_dir}"'/${uuid}.jpg"
-        if [ -f "$out_png" ] || [ -f "$out_jpg" ]; then
+        out="'"${images_dir}"'/${uuid}.png"
+        if [ -f "$out" ]; then
           exit 0
         fi
-        ext="${url##*.}"
-        ext_lc="$(echo "$ext" | tr "[:upper:]" "[:lower:]")"
-        if [ "$ext_lc" = "png" ]; then
-          wget -q "$url" -O "$out_png" || true
-        else
-          wget -q "$url" -O "$out_jpg" || true
-        fi
+        wget -q "$url" -O "$out" || true
       ' || true
 
   rm -rf "${tmpdir}"
   return 0
 }
 
-EMOTE_DIR="${DATA_DIR}/persona_emote"
-PIECE_DIR="${DATA_DIR}/persona_piece"
-EMOTE_IMG_DIR="${IMAGES_DIR}/persona_emote"
-PIECE_IMG_DIR="${IMAGES_DIR}/persona_piece"
+EMOTE_DIR="${DATA_DIR}/${EMOTE_KEY}"
+PIECE_DIR="${DATA_DIR}/${PIECE_KEY}"
+EMOTE_IMG_DIR="${IMAGES_DIR}/${EMOTE_KEY}"
+PIECE_IMG_DIR="${IMAGES_DIR}/${PIECE_KEY}"
+
+EMOTE_FILTER="(contentType eq 'PersonaDurable' and displayProperties/pieceType eq '${EMOTE_KEY}')"
+PIECE_FILTER="(contentType eq 'PersonaDurable' and displayProperties/pieceType ne '${EMOTE_KEY}')"
 
 changed_any="false"
 
-if fetch_all_for_piece_type "persona_emote" "${EMOTE_DIR}" "${EMOTE_IMG_DIR}"; then
+if fetch_all "${EMOTE_KEY}" "${EMOTE_FILTER}" "${EMOTE_DIR}" "${EMOTE_IMG_DIR}"; then
   changed_any="true"
 fi
 
-if fetch_all_for_piece_type "persona_piece" "${PIECE_DIR}" "${PIECE_DIR}/../persona_piece_images" >/dev/null 2>&1; then
-  true
-fi
-PIECE_IMG_DIR="${IMAGES_DIR}/persona_piece"
-
-if fetch_all_for_piece_type "persona_piece" "${PIECE_DIR}" "${PIECE_IMG_DIR}"; then
+if fetch_all "${PIECE_KEY}" "${PIECE_FILTER}" "${PIECE_DIR}" "${PIECE_IMG_DIR}"; then
   changed_any="true"
 fi
 
@@ -326,6 +313,13 @@ PIECE_COUNT="$(jq -r 'length' "${PIECE_DIR}/items.json")"
 EMOTE_CHANGES_SUMMARY="$(jq -r '"added=" + ((.added|length)|tostring) + ", removed=" + ((.removed|length)|tostring) + ", changed=" + ((.changed|length)|tostring)' "${EMOTE_DIR}/changes.json")"
 PIECE_CHANGES_SUMMARY="$(jq -r '"added=" + ((.added|length)|tostring) + ", removed=" + ((.removed|length)|tostring) + ", changed=" + ((.changed|length)|tostring)' "${PIECE_DIR}/changes.json")"
 
+INDEX_FILE="${DATA_DIR}/index.json"
+jq -nc \
+  --arg ts "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+  --argjson emotes "${EMOTE_COUNT}" \
+  --argjson pieces "${PIECE_COUNT}" \
+  '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${INDEX_FILE}"
+
 {
   echo "# Persona Assets"
   echo
@@ -339,11 +333,11 @@ PIECE_CHANGES_SUMMARY="$(jq -r '"added=" + ((.added|length)|tostring) + ", remov
   echo
   echo "| Image | Name | UUID |"
   echo "|-------|------|------|"
-  jq -r '.[] | "| <img src=\"./images/persona_emote/\(.uuid).png\" width=\"128\" height=\"128\" /> | \(.title) | \(.uuid) |"' "${EMOTE_DIR}/items.json"
+  jq -r '.[] | "| <img src=\"./assets/images/persona_emote/\(.uuid).png\" width=\"96\" height=\"96\" /> | \(.title) | \(.uuid) |"' "${EMOTE_DIR}/items.json"
   echo
   echo "## persona_piece"
   echo
   echo "| Image | Name | UUID |"
   echo "|-------|------|------|"
-  jq -r '.[] | "| <img src=\"./images/persona_piece/\(.uuid).png\" width=\"128\" height=\"128\" /> | \(.title) | \(.uuid) |"' "${PIECE_DIR}/items.json"
+  jq -r '.[] | "| <img src=\"./assets/images/persona_piece/\(.uuid).png\" width=\"96\" height=\"96\" /> | \(.title) | \(.uuid) |"' "${PIECE_DIR}/items.json"
 } > "${ROOT_DIR}/README.md"
