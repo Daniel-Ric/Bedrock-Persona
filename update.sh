@@ -5,8 +5,7 @@ command -v curl >/dev/null
 command -v jq >/dev/null
 command -v wget >/dev/null
 
-: "${EMAIL:?Missing EMAIL}"
-: "${PASSWORD:?Missing PASSWORD}"
+: "${IOS_DEVICE_ID:?Missing IOS_DEVICE_ID}"
 
 TITLE_ID="${TITLE_ID:-20ca2}"
 SCID="${SCID:-4fc10100-5f7a-4470-899b-280835760c07}"
@@ -33,7 +32,7 @@ client_post() {
   curl -sS -L -X POST "${BASE_URL}${path}" -H 'Content-Type: application/json' -d "${body}"
 }
 
-LOGINRESULT="$(client_post "/Client/LoginWithEmailAddress" "$(jq -nc --arg e "$EMAIL" --arg p "$PASSWORD" --arg t "$TITLE_ID" '{Email:$e,Password:$p,TitleId:$t}')" )"
+LOGINRESULT="$(client_post "/Client/LoginWithIOSDeviceID" "$(jq -nc --arg d "$IOS_DEVICE_ID" '{DeviceId:$d,CreateAccount:true}')" )"
 
 if ! echo "${LOGINRESULT}" | jq -e '.data.EntityToken.EntityToken and .data.PlayFabId' >/dev/null; then
   echo "${LOGINRESULT}" | jq .
