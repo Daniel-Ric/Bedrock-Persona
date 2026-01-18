@@ -32,7 +32,7 @@ client_post() {
   curl -sS -L -X POST "${BASE_URL}${path}" -H 'Content-Type: application/json' -d "${body}"
 }
 
-LOGINRESULT="$(client_post "/Client/LoginWithIOSDeviceID" "$(jq -nc --arg d "$IOS_DEVICE_ID" '{DeviceId:$d,CreateAccount:true}')" )"
+LOGINRESULT="$(client_post "/Client/LoginWithIOSDeviceID" "$(jq -nc --arg d "$IOS_DEVICE_ID" --arg t "$TITLE_ID" '{DeviceId:$d,TitleId:$t,CreateAccount:true}')" )"
 
 if ! echo "${LOGINRESULT}" | jq -e '.data.EntityToken.EntityToken and .data.PlayFabId' >/dev/null; then
   echo "${LOGINRESULT}" | jq .
@@ -139,10 +139,7 @@ diff_items() {
           ($n|keys) as $keys
           | [ $keys[] | select($o[.] and ($o[.] != $n[.])) ]
         ),
-        counts: {
-          old: ($old|length),
-          new: ($new|length)
-        }
+        counts: { old: ($old|length), new: ($new|length) }
       }
     )
   '
@@ -307,6 +304,11 @@ changed_any="false"
 if fetch_all_for_piece_type "persona_emote" "${EMOTE_DIR}" "${EMOTE_IMG_DIR}"; then
   changed_any="true"
 fi
+
+if fetch_all_for_piece_type "persona_piece" "${PIECE_DIR}" "${PIECE_DIR}/../persona_piece_images" >/dev/null 2>&1; then
+  true
+fi
+PIECE_IMG_DIR="${IMAGES_DIR}/persona_piece"
 
 if fetch_all_for_piece_type "persona_piece" "${PIECE_DIR}" "${PIECE_IMG_DIR}"; then
   changed_any="true"
