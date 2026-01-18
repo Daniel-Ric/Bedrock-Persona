@@ -1,6 +1,7 @@
 name: Update Persona Assets
 run-name: Update
 on:
+  workflow_dispatch:
   push:
   schedule:
     - cron: "30 */6 * * *"
