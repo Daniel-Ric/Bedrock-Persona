@@ -21,26 +21,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq curl wget coreutils findutils
+          sudo apt-get install -y jq curl wget
 
       - name: Run updater
         run: |
           chmod +x ./update.sh
           ./update.sh
 
-      - name: Detect changes
+      - name: Commit changes
         run: |
           if git diff --quiet; then
-            echo "CHANGED=false" >> $GITHUB_ENV
-          else
-            echo "CHANGED=true" >> $GITHUB_ENV
+            echo "No changes to commit."
+            exit 0
           fi
-
-      - uses: EndBug/add-and-commit@v9.1.0
-        if: env.CHANGED == 'true'
-        with:
-          message: "Updated persona assets"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Updated persona assets"
+          git push
