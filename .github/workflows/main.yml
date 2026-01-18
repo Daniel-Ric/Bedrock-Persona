@@ -13,8 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  EMAIL: ${{ secrets.EMAIL }}
-  PASSWORD: ${{ secrets.PASSWORD }}
+  IOS_DEVICE_ID: ${{ secrets.IOS_DEVICE_ID }}
 
 jobs:
   update:
