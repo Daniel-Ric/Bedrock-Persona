@@ -1,5 +1,6 @@
 name: Update Persona Assets
 run-name: Update
+
 on:
   workflow_dispatch:
   push:
@@ -40,17 +41,30 @@ jobs:
           chmod +x ./update.sh
           ./update.sh
 
-      - name: Commit changes
+      - name: Commit changes (safe)
         run: |
           if git diff --quiet; then
             echo "No changes to commit."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "Updated persona assets"
-            git push
+            exit 0
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "Updated persona assets" || exit 0
+
+          for i in 1 2 3; do
+            git fetch origin main
+            git pull --rebase origin main || true
+            if git push; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "Push failed after retries."
+          exit 1
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
