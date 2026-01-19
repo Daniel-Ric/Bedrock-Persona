@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Persona Assets</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">
+        <h1>Persona Assets</h1>
+        <div class="subtitle">
+          <span id="updatedAt">Updated: —</span> • <span id="counts">—</span>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge" id="count">—</span>
+        <a class="btn" href="./data/persona_emote/items.json" target="_blank" rel="noreferrer">Emotes JSON</a>
+        <a class="btn" href="./data/persona_piece/items.json" target="_blank" rel="noreferrer">Pieces JSON</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="controls">
+        <input id="q" placeholder="Search title, uuid, creator, keywords..." />
+        <select id="type">
+          <option value="all">All types</option>
+          <option value="persona_emote">persona_emote</option>
+          <option value="persona_piece">persona_piece</option>
+        </select>
+        <select id="rarity"></select>
+        <select id="creator"></select>
+        <select id="purchasable">
+          <option value="all">Purchasable: any</option>
+          <option value="true">Purchasable: yes</option>
+          <option value="false">Purchasable: no</option>
+        </select>
+      </div>
+
+      <div style="margin-top:10px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div class="small">Tip: sort by last modified to catch new updates quickly.</div>
+        <div style="min-width:240px;">
+          <select id="sort" style="width:100%; padding:10px 10px; border-radius:12px; border:1px solid var(--border); background:#0b1320; color:var(--text);">
+            <option value="title_asc">Sort: Title (A→Z)</option>
+            <option value="title_desc">Sort: Title (Z→A)</option>
+            <option value="modified_desc">Sort: LastModifiedDate (newest)</option>
+            <option value="start_desc">Sort: StartDate (newest)</option>
+            <option value="price_asc">Sort: Price (low→high)</option>
+            <option value="price_desc">Sort: Price (high→low)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="grid" class="grid"></div>
+
+      <div class="footer">
+        <div>Data source: PlayFab Economy v2 Catalog/Search</div>
+        <div>UI shows up to 2000 results — use filters to narrow.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
