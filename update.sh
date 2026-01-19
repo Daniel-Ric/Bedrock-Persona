@@ -16,8 +16,9 @@ ROOT_DIR="$(pwd)"
 STATE_DIR="${ROOT_DIR}/.state"
 DATA_DIR="${ROOT_DIR}/data"
 SITE_DIR="${ROOT_DIR}/site"
+TMP_DIR="${ROOT_DIR}/.tmp_build"
 
-mkdir -p "${STATE_DIR}" "${DATA_DIR}" "${SITE_DIR}"
+mkdir -p "${STATE_DIR}" "${DATA_DIR}" "${SITE_DIR}" "${TMP_DIR}"
 
 client_post() {
   local path="${1}"
@@ -252,6 +253,16 @@ fetch_all() {
   return 0
 }
 
+ensure_json() {
+  local f="${1}"
+  local dir
+  dir="$(dirname "${f}")"
+  mkdir -p "${dir}"
+  if [ ! -f "${f}" ]; then
+    echo '[]' > "${f}"
+  fi
+}
+
 EMOTE_KEY="persona_emote"
 PIECE_KEY="persona_piece"
 
@@ -264,10 +275,8 @@ PIECE_FILTER="(contentType eq 'PersonaDurable' and displayProperties/pieceType n
 fetch_all "${EMOTE_KEY}" "${EMOTE_FILTER}" "${EMOTE_DIR}" || true
 fetch_all "${PIECE_KEY}" "${PIECE_FILTER}" "${PIECE_DIR}" || true
 
-UPDATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-
-if [ ! -f "${EMOTE_DIR}/items.json" ]; then echo '[]' > "${EMOTE_DIR}/items.json"; fi
-if [ ! -f "${PIECE_DIR}/items.json" ]; then echo '[]' > "${PIECE_DIR}/items.json"; fi
+ensure_json "${EMOTE_DIR}/items.json"
+ensure_json "${PIECE_DIR}/items.json"
 
 EMOTE_COUNT="$(jq -r 'length' "${EMOTE_DIR}/items.json")"
 PIECE_COUNT="$(jq -r 'length' "${PIECE_DIR}/items.json")"
@@ -276,6 +285,20 @@ EMOTE_SUMMARY="added=0, removed=0, changed=0"
 PIECE_SUMMARY="added=0, removed=0, changed=0"
 if [ -f "${EMOTE_DIR}/changes.json" ]; then EMOTE_SUMMARY="$(jq -r '"added=" + ((.added|length)|tostring) + ", removed=" + ((.removed|length)|tostring) + ", changed=" + ((.changed|length)|tostring)' "${EMOTE_DIR}/changes.json")"; fi
 if [ -f "${PIECE_DIR}/changes.json" ]; then PIECE_SUMMARY="$(jq -r '"added=" + ((.added|length)|tostring) + ", removed=" + ((.removed|length)|tostring) + ", changed=" + ((.changed|length)|tostring)' "${PIECE_DIR}/changes.json")"; fi
+
+CHANGED="false"
+if [ -f "${EMOTE_DIR}/changes.json" ]; then
+  if [ "$(jq -r '((.added|length)+(.removed|length)+(.changed|length))' "${EMOTE_DIR}/changes.json")" -gt 0 ]; then CHANGED="true"; fi
+fi
+if [ -f "${PIECE_DIR}/changes.json" ]; then
+  if [ "$(jq -r '((.added|length)+(.removed|length)+(.changed|length))' "${PIECE_DIR}/changes.json")" -gt 0 ]; then CHANGED="true"; fi
+fi
+
+if [ "${CHANGED}" != "true" ]; then
+  exit 0
+fi
+
+UPDATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
 REPO="${GITHUB_REPOSITORY:-}"
 OWNER="${GITHUB_REPOSITORY_OWNER:-}"
@@ -289,14 +312,15 @@ if [ -n "${REPO}" ] && [ -n "${OWNER}" ]; then
   fi
 fi
 
+mkdir -p "${TMP_DIR}/site/data/persona_emote" "${TMP_DIR}/site/data/persona_piece"
+
 jq -nc --arg ts "${UPDATED_AT}" --argjson emotes "${EMOTE_COUNT}" --argjson pieces "${PIECE_COUNT}" '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${DATA_DIR}/index.json"
+jq -nc --arg ts "${UPDATED_AT}" --argjson emotes "${EMOTE_COUNT}" --argjson pieces "${PIECE_COUNT}" '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${TMP_DIR}/site/index.json"
 
-mkdir -p "${SITE_DIR}/data/persona_emote" "${SITE_DIR}/data/persona_piece"
-jq -nc --arg ts "${UPDATED_AT}" --argjson emotes "${EMOTE_COUNT}" --argjson pieces "${PIECE_COUNT}" '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${SITE_DIR}/index.json"
-cp "${EMOTE_DIR}/items.json" "${SITE_DIR}/data/persona_emote/items.json"
-cp "${PIECE_DIR}/items.json" "${SITE_DIR}/data/persona_piece/items.json"
+cp "${EMOTE_DIR}/items.json" "${TMP_DIR}/site/data/persona_emote/items.json"
+cp "${PIECE_DIR}/items.json" "${TMP_DIR}/site/data/persona_piece/items.json"
 
-cat > "${SITE_DIR}/styles.css" <<'CSS'
+cat > "${TMP_DIR}/site/styles.css" <<'CSS'
 :root{--bg:#0b0f16;--card:#101826;--muted:#93a4bf;--text:#e8eef9;--accent:#4aa3ff;--border:#1e2a3d}
 *{box-sizing:border-box}html,body{height:100%}
 body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#070a10,#0b0f16 40%,#070a10);color:var(--text)}
@@ -328,7 +352,7 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 .btn:hover{background:rgba(74,163,255,.18);text-decoration:none}
 CSS
 
-cat > "${SITE_DIR}/app.js" <<'JS'
+cat > "${TMP_DIR}/site/app.js" <<'JS'
 const state={all:[],filtered:[],type:"all",q:"",sort:"title_asc",rarity:"all",creator:"all",purchasable:"all"};
 const el=(id)=>document.getElementById(id);
 const fmt=(v)=>(v===null||v===undefined||v==="")?"—":String(v);
@@ -381,7 +405,7 @@ state.filtered=state.all.slice();applyFilters();}
 init().catch(err=>{el("grid").innerHTML=`<div class="small">Failed to load data: ${err.message}</div>`;});
 JS
 
-cat > "${SITE_DIR}/index.html" <<'HTML'
+cat > "${TMP_DIR}/site/index.html" <<'HTML'
 <!doctype html>
 <html lang="en">
 <head>
@@ -451,41 +475,50 @@ cat > "${SITE_DIR}/index.html" <<'HTML'
 </html>
 HTML
 
+rm -rf "${SITE_DIR}"
+mkdir -p "${SITE_DIR}"
+cp -R "${TMP_DIR}/site/." "${SITE_DIR}/"
+
 {
   echo "# Persona Assets"
   echo
-  echo "Automated dataset and web viewer for Minecraft Bedrock Persona catalog assets (PlayFab Economy v2)."
+  echo "This repository automatically mirrors Minecraft Bedrock Persona catalog entries using PlayFab Economy v2 (Catalog/Search)."
   echo
   if [ -n "${PAGES_URL}" ]; then
-    echo "## Live Web UI"
+    echo "## Web UI"
     echo
     echo "- ${PAGES_URL}"
     echo
   fi
-  echo "## Update Schedule"
+  echo "## What gets updated"
+  echo
+  echo "- `data/persona_emote/items.json`: normalized persona emote entries"
+  echo "- `data/persona_piece/items.json`: all other PersonaDurable entries excluding persona_emote"
+  echo "- `data/*/metadata.json`: unique keyword/rarity/creator/contentType summaries"
+  echo "- `data/*/changes.json`: added/removed/changed UUIDs compared to previous run"
+  echo "- `site/`: static web UI published via GitHub Pages"
+  echo
+  echo "## Schedule"
   echo
   echo "- Runs on push and every 6 hours via GitHub Actions"
   echo "- Last update (UTC): ${UPDATED_AT}"
   echo
-  echo "## Counts"
+  echo "## Current counts"
   echo
   echo "- persona_emote: ${EMOTE_COUNT} (${EMOTE_SUMMARY})"
   echo "- persona_piece: ${PIECE_COUNT} (${PIECE_SUMMARY})"
   echo
-  echo "## Files"
-  echo
-  echo "- data/index.json"
-  echo "- data/persona_emote/items.json"
-  echo "- data/persona_piece/items.json"
-  echo "- data/*/metadata.json"
-  echo "- site/ (GitHub Pages output)"
-  echo
   echo "## Setup"
   echo
-  echo "1. Add .github/workflows/main.yml and update.sh"
-  echo "2. Add Actions secret IOS_DEVICE_ID"
+  echo "1. Add the workflow + script to the repo"
+  echo "2. Add the Actions secret `IOS_DEVICE_ID` (any stable unique string, UUID recommended)"
   echo "3. Enable GitHub Pages: Settings → Pages → Source: GitHub Actions"
-  echo "4. Run the workflow once"
+  echo "4. Run the workflow once (Actions → Update Persona Assets → Run workflow)"
+  echo
+  echo "## Notes"
+  echo
+  echo "- No secrets are committed to the repository."
+  echo "- The workflow only commits when actual catalog changes are detected."
 } > "${ROOT_DIR}/README.md"
 
 jq -nc --arg ts "${UPDATED_AT}" '{updatedAt:$ts}' > "${STATE_DIR}/global.json"
