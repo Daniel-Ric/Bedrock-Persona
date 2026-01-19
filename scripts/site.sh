@@ -1,3 +1,5 @@
+write_site_assets() {
+  cat > "${TMP_DIR}/site/app.js" <<'JS'
 const state={all:[],filtered:[],type:"all",q:"",sort:"title_asc",rarity:"all",creator:"all",purchasable:"all"};
 const el=(id)=>document.getElementById(id);
 const fmt=(v)=>(v===null||v===undefined||v==="")?"—":String(v);
@@ -52,3 +54,101 @@ el("creator").addEventListener("change",(e)=>{state.creator=e.target.value;apply
 el("purchasable").addEventListener("change",(e)=>{state.purchasable=e.target.value;applyFilters();});
 state.filtered=state.all.slice();applyFilters();}
 init().catch(err=>{el("grid").innerHTML=`<div class="rounded-2xl border border-dashed border-rose-500/40 bg-rose-500/10 p-6 text-sm text-rose-200">Failed to load data: ${err.message}</div>`;});
+JS
+
+  cat > "${TMP_DIR}/site/index.html" <<'HTML'
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Persona Assets</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <div class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b,transparent_55%)]"></div>
+    <div class="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10">
+      <header class="flex flex-col gap-6 rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6 shadow-xl shadow-slate-950/40 backdrop-blur">
+        <div class="flex flex-wrap items-start justify-between gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Minecraft Bedrock</p>
+            <h1 class="mt-2 text-3xl font-semibold text-white">Persona Assets</h1>
+            <p class="mt-2 text-sm text-slate-400"><span id="updatedAt">Updated: —</span> • <span id="counts">—</span></p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-100" id="count">—</span>
+            <a class="inline-flex items-center gap-2 rounded-full border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400/70 hover:text-white" href="./data/persona_emote/items.json" target="_blank" rel="noreferrer">Emotes JSON</a>
+            <a class="inline-flex items-center gap-2 rounded-full border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400/70 hover:text-white" href="./data/persona_piece/items.json" target="_blank" rel="noreferrer">Pieces JSON</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="rounded-3xl border border-slate-800/70 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/40 backdrop-blur">
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+          <input id="q" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400/70 focus:outline-none xl:col-span-2" placeholder="Search title, uuid, creator, keywords..." />
+          <select id="type" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
+            <option value="all">All types</option>
+            <option value="persona_emote">persona_emote</option>
+            <option value="persona_piece">persona_piece</option>
+          </select>
+          <select id="rarity" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none"></select>
+          <select id="creator" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none"></select>
+          <select id="purchasable" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
+            <option value="all">Purchasable: any</option>
+            <option value="true">Purchasable: yes</option>
+            <option value="false">Purchasable: no</option>
+          </select>
+        </div>
+
+        <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-xs text-slate-400">Tip: sort by last modified to catch new updates quickly.</p>
+          <div class="w-full sm:w-72">
+            <select id="sort" class="h-12 w-full rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
+              <option value="title_asc">Sort: Title (A→Z)</option>
+              <option value="title_desc">Sort: Title (Z→A)</option>
+              <option value="modified_desc">Sort: LastModifiedDate (newest)</option>
+              <option value="start_desc">Sort: StartDate (newest)</option>
+              <option value="price_asc">Sort: Price (low→high)</option>
+              <option value="price_desc">Sort: Price (high→low)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+
+        <div class="mt-6 flex flex-wrap justify-between gap-3 text-xs text-slate-400">
+          <span>Data source: PlayFab Economy v2 Catalog/Search</span>
+          <span>UI shows up to 2000 results — use filters to narrow.</span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
+HTML
+}
+
+build_site() {
+  local updated_at="${1}"
+  local emote_count="${2}"
+  local piece_count="${3}"
+  local emote_dir="${4}"
+  local piece_dir="${5}"
+
+  mkdir -p "${TMP_DIR}/site/data/persona_emote" "${TMP_DIR}/site/data/persona_piece"
+
+  jq -nc --arg ts "${updated_at}" --argjson emotes "${emote_count}" --argjson pieces "${piece_count}" '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${DATA_DIR}/index.json"
+  jq -nc --arg ts "${updated_at}" --argjson emotes "${emote_count}" --argjson pieces "${piece_count}" '{updatedAt:$ts, counts:{persona_emote:$emotes, persona_piece:$pieces}}' > "${TMP_DIR}/site/index.json"
+
+  cp "${emote_dir}/items.json" "${TMP_DIR}/site/data/persona_emote/items.json"
+  cp "${piece_dir}/items.json" "${TMP_DIR}/site/data/persona_piece/items.json"
+
+  write_site_assets
+
+  rm -rf "${SITE_DIR}"
+  mkdir -p "${SITE_DIR}"
+  cp -R "${TMP_DIR}/site/." "${SITE_DIR}/"
+}
