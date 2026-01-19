@@ -36,15 +36,24 @@ CHANGED="false"
 if has_changes "${EMOTE_DIR}/changes.json"; then CHANGED="true"; fi
 if has_changes "${PIECE_DIR}/changes.json"; then CHANGED="true"; fi
 
+PAGES_URL="$(resolve_pages_url)"
+
+UPDATED_AT=""
+if [ -f "${STATE_DIR}/global.json" ]; then
+  UPDATED_AT="$(jq -r '.updatedAt // ""' "${STATE_DIR}/global.json")"
+fi
+if [ -z "${UPDATED_AT}" ]; then
+  UPDATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+fi
+
+build_readme "${UPDATED_AT}" "${PAGES_URL}" "${EMOTE_COUNT}" "${PIECE_COUNT}" "${EMOTE_SUMMARY}" "${PIECE_SUMMARY}"
+
 if [ "${CHANGED}" != "true" ]; then
   exit 0
 fi
 
 UPDATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-PAGES_URL="$(resolve_pages_url)"
-
 build_site "${UPDATED_AT}" "${EMOTE_COUNT}" "${PIECE_COUNT}" "${EMOTE_DIR}" "${PIECE_DIR}"
-
 build_readme "${UPDATED_AT}" "${PAGES_URL}" "${EMOTE_COUNT}" "${PIECE_COUNT}" "${EMOTE_SUMMARY}" "${PIECE_SUMMARY}"
 
 jq -nc --arg ts "${UPDATED_AT}" '{updatedAt:$ts}' > "${STATE_DIR}/global.json"
