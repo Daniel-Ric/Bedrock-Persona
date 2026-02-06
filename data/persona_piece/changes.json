@@ -1,7 +1,10 @@
 {
   "added": [],
   "removed": [],
-  "changed": [],
+  "changed": [
+    "09bc3200-598c-2c54-189f-6098e2fb3d4c",
+    "a93ea494-6b25-ae4c-5944-c66f4d0a2f9b"
+  ],
   "counts": {
     "old": 10200,
     "new": 10200

@@ -20791,7 +20791,7 @@
     "id": "7dca7e41-bbb9-45d8-ae4f-f2baf9932a47",
     "uuid": "09bc3200-598c-2c54-189f-6098e2fb3d4c",
     "title": "Bluey's Zebra Onesie",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/231f61ef-ecfd-45e7-aa9a-a505f6873740/zebra_onesie_Thumbnail_0.png",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/ffe8b028-a27b-426b-9406-b8635093d4e3/zebra_onesie_Thumbnail_0.png",
     "rarity": "rare",
     "keywords": [],
     "creatorName": "Jigarbov Productions",
@@ -20799,10 +20799,10 @@
     "price": 280,
     "purchasable": true,
     "startDate": null,
-    "lastModifiedDate": "2026-02-05T18:01:40.1Z",
+    "lastModifiedDate": "2026-02-06T13:05:21.54Z",
     "creationDate": "2026-02-04T19:58:30.216Z",
     "contentType": "PersonaDurable",
-    "pieceType": "persona_outerwear",
+    "pieceType": "persona_hood",
     "rating": null
   },
   {
@@ -204168,7 +204168,7 @@
     "id": "783d3632-105d-4c82-87db-3b6e09f42202",
     "uuid": "a93ea494-6b25-ae4c-5944-c66f4d0a2f9b",
     "title": "Bingo's Cheetah Onesie",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/05109576-4f7a-4a70-895a-4dcf72ccd451/cheetah_onesie_Thumbnail_0.png",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/fba65dce-cb32-421f-b7e8-2c5d2841dfad/cheetah_onesie_Thumbnail_0.png",
     "rarity": "rare",
     "keywords": [],
     "creatorName": "Jigarbov Productions",
@@ -204176,10 +204176,10 @@
     "price": 280,
     "purchasable": true,
     "startDate": null,
-    "lastModifiedDate": "2026-02-05T22:16:51.73Z",
+    "lastModifiedDate": "2026-02-06T13:05:33.077Z",
     "creationDate": "2026-02-04T19:52:35.288Z",
     "contentType": "PersonaDurable",
-    "pieceType": "persona_outerwear",
+    "pieceType": "persona_hood",
     "rating": null
   },
   {
