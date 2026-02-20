@@ -7401,6 +7401,33 @@
     "rating": null
   },
   {
+    "id": "697273ce-828f-4c3b-8c32-9c2a681218bb",
+    "uuid": "f1d97f35-321c-145a-9370-726870c576ad",
+    "title": "DRAGON BACK FLIP",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/fed3ef05-2596-4c58-b6e0-a0cb86542802/em_maca_dragonflip_thumbnail_0.png",
+    "rarity": "common",
+    "keywords": [
+      "Animated",
+      "Cool",
+      "Dance",
+      "Dragon",
+      "Ninja",
+      "Ninjas",
+      "Trendy",
+      "Dragons"
+    ],
+    "creatorName": "Maca Designs",
+    "offerId": "95f476f9-444e-4292-8f29-0919b4a02558",
+    "price": 160,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-02-20T15:03:55.332Z",
+    "creationDate": "2026-02-20T14:06:39.651Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "1a0e9e08-c6fe-4496-bc34-779352ed0037",
     "uuid": "d1006d56-8618-d6be-5be9-0f1b1dd7c820",
     "title": "Dab",
@@ -26851,6 +26878,28 @@
     "startDate": null,
     "lastModifiedDate": "2025-10-22T09:34:05.166Z",
     "creationDate": "2025-02-24T16:18:39.958Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
+    "id": "f8699436-18e9-4482-a8cf-5e9865cf8f0a",
+    "uuid": "027ce8ce-0bc7-eba9-e4e8-575198c8c8c6",
+    "title": "Sad Champ",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/fe5c8d77-4a20-46ca-b3aa-5bbbf790ddb1/em_sad_champ_thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [
+      "Fun",
+      "Funny",
+      "Adventures"
+    ],
+    "creatorName": "Insane Logic",
+    "offerId": "ce8a6c15-a824-4db5-894a-6ba379b95b27",
+    "price": 660,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-02-20T14:11:25.773Z",
+    "creationDate": "2026-02-20T14:05:32.014Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_emote",
     "rating": null
