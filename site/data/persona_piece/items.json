@@ -127959,6 +127959,33 @@
     "rating": null
   },
   {
+    "id": "b8d6c22a-a3de-4a2f-882a-22404a7607a0",
+    "uuid": "a0d3778c-2cce-f099-afe1-5fb7ed1d9793",
+    "title": "Dark Shadow Fire Demon Knight",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/4581f2ba-81cc-4829-a29c-b27a51069ebd/Dark_Shadow_Fire_Demon_Knight_outerwear_Thumbnail_0.png",
+    "rarity": "epic",
+    "keywords": [
+      "Boss",
+      "Creatures",
+      "Dark",
+      "Demon",
+      "Fire",
+      "Halloween",
+      "Warrior",
+      "Horror"
+    ],
+    "creatorName": "Diveblocks",
+    "offerId": "6c8941b6-e6b0-4186-8135-2396a4f13f24",
+    "price": 400,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-03-04T16:43:31.046Z",
+    "creationDate": "2026-03-03T13:33:58.298Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_hood",
+    "rating": null
+  },
+  {
     "id": "e90ce2cb-ef1d-473c-9bda-bbb5c90af942",
     "uuid": "17d2b799-d5d4-9139-e9e2-60d349f7a4d3",
     "title": "Dark Shadow Fire Demon Knight Trousers",
@@ -158137,33 +158164,6 @@
     "rating": null
   },
   {
-    "id": "ad0c595f-fe61-4c2f-9f20-e5ac5b812d53",
-    "uuid": "557c0128-751e-0f3a-c9b4-58adf4d34040",
-    "title": "Dragonscale Top",
-    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/e690f3b5-3e14-41b0-b1ef-95eed7eafbb9/dragonscale_top_Thumbnail_0.png",
-    "rarity": "rare",
-    "keywords": [
-      "Dragon",
-      "Power",
-      "Armor",
-      "Battle",
-      "Fantasy",
-      "Mystery",
-      "Fighting",
-      "Epic"
-    ],
-    "creatorName": "GoE-Craft",
-    "offerId": "1b6a4c63-3114-4746-87f2-c83621e63c5f",
-    "price": 240,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2023-08-10T18:05:14.289Z",
-    "creationDate": "2021-03-12T17:52:40.108Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_top",
-    "rating": null
-  },
-  {
     "id": "44bc2076-ad25-4557-964e-18a29771960b",
     "uuid": "faea5549-235c-5275-e342-511f5ea7972a",
     "title": "Athletic Club Cleats",
@@ -165035,6 +165035,33 @@
     "startDate": null,
     "lastModifiedDate": "2024-01-01T00:16:31.317Z",
     "creationDate": "2023-08-04T15:43:41.054Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_top",
+    "rating": null
+  },
+  {
+    "id": "ad0c595f-fe61-4c2f-9f20-e5ac5b812d53",
+    "uuid": "557c0128-751e-0f3a-c9b4-58adf4d34040",
+    "title": "Dragonscale Top",
+    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/e690f3b5-3e14-41b0-b1ef-95eed7eafbb9/dragonscale_top_Thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [
+      "Dragon",
+      "Power",
+      "Armor",
+      "Battle",
+      "Fantasy",
+      "Mystery",
+      "Fighting",
+      "Epic"
+    ],
+    "creatorName": "GoE-Craft",
+    "offerId": "1b6a4c63-3114-4746-87f2-c83621e63c5f",
+    "price": 240,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2023-08-10T18:05:14.289Z",
+    "creationDate": "2021-03-12T17:52:40.108Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_top",
     "rating": null
@@ -192783,33 +192810,6 @@
     "creationDate": "2025-12-02T15:06:40.902Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_feet",
-    "rating": null
-  },
-  {
-    "id": "32273082-62a6-4e01-8835-f4f8a1213aca",
-    "uuid": "0e0d197c-b4e0-dd4f-5781-6a55f770a713",
-    "title": "Ender Tentacle Pants",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/d902ffc4-cf82-4fb1-9bc2-a4b690fa97c8/Ender_Tentacle_Pants_Thumbnail_0.png",
-    "rarity": "epic",
-    "keywords": [
-      "Ender",
-      "Purple",
-      "Dark",
-      "Black",
-      "Animated",
-      "Creatures",
-      "Monster",
-      "Epic"
-    ],
-    "creatorName": "Mush Co",
-    "offerId": "e5d7dce4-0ee6-4328-b15f-96306adc3bd3",
-    "price": 240,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2025-10-17T23:40:23.267Z",
-    "creationDate": "2024-08-06T14:48:02.633Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_bottom",
     "rating": null
   },
   {
