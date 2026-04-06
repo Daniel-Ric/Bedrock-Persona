@@ -17,12 +17,12 @@ This repository automatically mirrors Minecraft Bedrock Persona catalog entries 
 ## Schedule
 
 - Runs on push and every 6 hours via GitHub Actions
-- Last update (UTC): 2026-04-04T13:35:43Z
+- Last update (UTC): 2026-04-06T19:36:40Z
 
 ## Current counts
 
 - persona_emote: 1918 (added=0, removed=0, changed=0)
-- persona_piece: 10200 (added=0, removed=0, changed=0)
+- persona_piece: 10200 (added=2, removed=2, changed=2)
 
 ## Setup
 
