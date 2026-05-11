@@ -33621,6 +33621,26 @@
     "rating": null
   },
   {
+    "id": "2dee18da-9d37-47c2-9600-d031fec46c92",
+    "uuid": "f0d4e86d-dee6-7b32-2a9c-ffd09bf92637",
+    "title": "Super Secret Handshake",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/ed9fc56e-b068-4565-b8a1-6b133cfff971/em_simply_super_secret_handshake_thumbnail_0.png",
+    "rarity": "common",
+    "keywords": [
+      "Secret"
+    ],
+    "creatorName": "Simply Brilliant",
+    "offerId": "62d7edef-313a-4bda-bcbd-b89e7224a47d",
+    "price": 160,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-05-11T15:03:42.629Z",
+    "creationDate": "2026-05-11T14:45:28.385Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "35d2a33d-34ac-4307-b5a0-426a823b349a",
     "uuid": "21c21052-509a-1656-8e5e-8b7f46b2636f",
     "title": "Super Shuffle",
