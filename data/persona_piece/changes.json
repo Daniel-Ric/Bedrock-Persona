@@ -1,6 +1,12 @@
 {
-  "added": [],
-  "removed": [],
+  "added": [
+    "6f9ff976-a1a3-0b9a-118c-7604320381ef",
+    "bc3c0aa3-c170-b219-250b-3e4e8cc8a031"
+  ],
+  "removed": [
+    "8fe281d7-e58c-736b-12c8-6242e190debb",
+    "ac73ce9c-8ef2-b89b-5e94-b8d570816b31"
+  ],
   "changed": [],
   "counts": {
     "old": 10200,
