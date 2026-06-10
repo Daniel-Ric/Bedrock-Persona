@@ -34662,6 +34662,24 @@
     "rating": null
   },
   {
+    "id": "206640c6-0f6e-4299-a7cd-6797a51aa05c",
+    "uuid": "c6dc511b-6736-06e2-19cf-026d889344dc",
+    "title": "Spooky Morph",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/f02b78af-afdd-4aac-ab5f-36116ebd8b23/em_diveblocks_spooky_morph_thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [],
+    "creatorName": "Diveblocks",
+    "offerId": "770d9135-7188-404e-8d37-ff298ffd4573",
+    "price": 660,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-10T13:33:21.537Z",
+    "creationDate": "2026-06-10T13:25:29.514Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "a3aca9f2-643e-41c1-9517-48c3d1180a0f",
     "uuid": "f98da84c-37e7-4754-6cfa-eb7aa44da3be",
     "title": "Spooky Skeleton Dance",
@@ -36873,6 +36891,32 @@
     "startDate": null,
     "lastModifiedDate": "2023-08-10T14:21:40.141Z",
     "creationDate": "2021-12-01T16:48:59.091Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
+    "id": "cf5e3bfe-f9c5-4a46-b54d-3af8c8ae2db5",
+    "uuid": "f111d963-b363-bd33-682a-493509090292",
+    "title": "Sword Catch",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/da2ebe9a-ce2f-4382-9917-19d14d06d5c5/em_carper_creative_sword_catch_thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [
+      "Animation",
+      "Battle",
+      "Cinematic",
+      "Cool",
+      "Epic",
+      "Fun",
+      "Hackers"
+    ],
+    "creatorName": "Carper Creative",
+    "offerId": "4068307b-a3b6-43ee-8da8-23c377d0ceb5",
+    "price": 660,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-10T13:33:00.568Z",
+    "creationDate": "2026-06-10T13:25:35.36Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_emote",
     "rating": null
