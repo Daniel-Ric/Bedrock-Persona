@@ -17,7 +17,7 @@ This repository automatically mirrors Minecraft Bedrock Persona catalog entries 
 ## Schedule
 
 - Runs on push and every 6 hours via GitHub Actions
-- Last update (UTC): 2026-06-09T20:29:21Z
+- Last update (UTC): 2026-06-10T05:01:14Z
 
 ## Current counts
 
