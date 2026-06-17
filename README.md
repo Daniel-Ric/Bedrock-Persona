@@ -22,7 +22,7 @@ This repository automatically mirrors Minecraft Bedrock Persona catalog entries 
 ## Current counts
 
 - persona_emote: 2055 (added=0, removed=0, changed=0)
-- persona_piece: 10200 (added=2, removed=2, changed=0)
+- persona_piece: 10200 (added=0, removed=0, changed=0)
 
 ## Setup
 
