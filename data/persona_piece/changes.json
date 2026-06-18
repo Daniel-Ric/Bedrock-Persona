@@ -1,6 +1,5 @@
 {
-  "added": [],
-  "removed": [
+  "added": [
     "00675e3d-9893-42a8-a70c-c99402ae75cb",
     "00ef29cb-3e3c-3ff5-c0d6-2424706b3813",
     "0102dd97-dfed-d027-ee52-cd57db858957",
@@ -302,12 +301,10 @@
     "fe01c0f9-3a6f-4276-9b58-5bee1fb97dce",
     "fe80f270-859d-83fb-fdee-cebc752718ed"
   ],
-  "changed": [
-    "6f13045b-6d78-06fb-0720-f8812d6ab2f1",
-    "8b5bdabc-0d31-6347-3d39-633e06534746"
-  ],
+  "removed": [],
+  "changed": [],
   "counts": {
-    "old": 10200,
-    "new": 9900
+    "old": 9900,
+    "new": 10200
   }
 }
