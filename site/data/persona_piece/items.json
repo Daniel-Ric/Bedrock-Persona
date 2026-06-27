@@ -90369,7 +90369,15 @@
     "creationDate": "2026-04-10T21:13:41.315Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_capes",
-    "rating": null
+    "rating": {
+      "Average": 5.0,
+      "TotalCount": 1,
+      "Count5Star": 1,
+      "Count4Star": 0,
+      "Count3Star": 0,
+      "Count2Star": 0,
+      "Count1Star": 0
+    }
   },
   {
     "id": "5e54aa1c-9c98-440b-8907-cd7caeaf3f81",
