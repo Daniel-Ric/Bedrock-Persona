@@ -13183,6 +13183,28 @@
     "rating": null
   },
   {
+    "id": "20e7f698-ae51-4be6-9c5f-718321bd8d29",
+    "uuid": "a71be393-23ec-6e0d-cf89-5843709ff675",
+    "title": "Feeling Tired",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/67b2bbd3-2084-41ca-96e1-a1e56ff0aa49/em_dead_tired_thumbnail_0.png",
+    "rarity": "uncommon",
+    "keywords": [
+      "Animated",
+      "Character Customization",
+      "Funny"
+    ],
+    "creatorName": "MobBlocks",
+    "offerId": "67a41e1a-4e6c-4ccf-9132-0c426a9844d8",
+    "price": 310,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-07-23T15:59:35.095Z",
+    "creationDate": "2026-07-23T15:53:35.117Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "989f7621-667a-49af-9566-0d8d537d5203",
     "uuid": "f1c9333d-24f0-40e8-a177-b515c82b3444",
     "title": "Feet Clap",
@@ -14785,6 +14807,30 @@
     "startDate": null,
     "lastModifiedDate": "2026-06-11T03:38:55.235Z",
     "creationDate": "2024-07-15T15:30:28.414Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
+    "id": "06f79dc8-dba5-4d6e-85a7-dc23b6b606b9",
+    "uuid": "125031a5-a0d8-d47a-f5c6-8f513be96d93",
+    "title": "Flying Anime Run",
+    "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/d5e2a01f-c251-49f2-bf15-3ce7802cd9fe/em_flying_anime_run_thumbnail_0.png",
+    "rarity": "uncommon",
+    "keywords": [
+      "Animated",
+      "Animation",
+      "Fun",
+      "Funny",
+      "Anime"
+    ],
+    "creatorName": "Dodo Studios",
+    "offerId": "9b8e220e-c2f1-4470-8589-8c3d59470541",
+    "price": 310,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-07-23T16:01:34.643Z",
+    "creationDate": "2026-07-23T15:53:33.301Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_emote",
     "rating": null
