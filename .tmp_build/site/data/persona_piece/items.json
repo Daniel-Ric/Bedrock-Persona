@@ -57060,6 +57060,24 @@
     "rating": null
   },
   {
+    "id": "76d929d1-b503-4600-aa35-7f0a0178cfe8",
+    "uuid": "9bf5e433-407f-b90f-e125-8f6ca2a63cf5",
+    "title": "Challenger Surcoat",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/e7238783-b4a5-4581-88cd-3f4bca0194b7/ChallengersSurcoat_Thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [],
+    "creatorName": "Minecraft",
+    "offerId": "3511b12f-853c-4078-9535-5651f3422cab",
+    "price": null,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-07-30T22:51:05.961Z",
+    "creationDate": "2026-07-30T21:57:23.458Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_outerwear",
+    "rating": null
+  },
+  {
     "id": "d8346c8a-a450-4019-b2da-d3ce129329b5",
     "uuid": "1b8d17ab-e854-a74a-2eec-e40ff677d625",
     "title": "Chameleon",
@@ -81971,26 +81989,6 @@
     "rating": null
   },
   {
-    "id": "05836835-39d6-47c8-997d-0c454008b7b5",
-    "uuid": "816ecddd-8896-49bc-a86b-9f7ca21cb2ac",
-    "title": "Copper Pants",
-    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/64702bef-ee75-4314-aefd-9f531baa28ae/pants_copper_thumbnail_0.png",
-    "rarity": "common",
-    "keywords": [
-      "Fall"
-    ],
-    "creatorName": "Minecraft",
-    "offerId": "d143dee1-cc80-4ecf-a039-547d5756e747",
-    "price": 60,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-10T20:30:16.671Z",
-    "creationDate": "2020-11-21T01:13:45.463Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_bottom",
-    "rating": null
-  },
-  {
     "id": "07311224-b413-43a6-be17-872bf98d6090",
     "uuid": "643b5108-3bc2-3834-d851-3aa8d8b14d77",
     "title": "Animated Propeller Hat",
@@ -88915,6 +88913,26 @@
     "creationDate": "2023-02-13T15:09:35.262Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_back",
+    "rating": null
+  },
+  {
+    "id": "05836835-39d6-47c8-997d-0c454008b7b5",
+    "uuid": "816ecddd-8896-49bc-a86b-9f7ca21cb2ac",
+    "title": "Copper Pants",
+    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/64702bef-ee75-4314-aefd-9f531baa28ae/pants_copper_thumbnail_0.png",
+    "rarity": "common",
+    "keywords": [
+      "Fall"
+    ],
+    "creatorName": "Minecraft",
+    "offerId": "d143dee1-cc80-4ecf-a039-547d5756e747",
+    "price": 60,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-10T20:30:16.671Z",
+    "creationDate": "2020-11-21T01:13:45.463Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_bottom",
     "rating": null
   },
   {
@@ -157976,27 +157994,6 @@
     "rating": null
   },
   {
-    "id": "e150a841-666d-4351-93c5-8aacc53f596f",
-    "uuid": "bb4eb774-1f94-ee45-76cd-17cebd6467a4",
-    "title": "Demon Lord Mask",
-    "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/c54e3771-41d4-47d9-9423-9d804055a2b6/demon_lord_mask_Thumbnail_0.png",
-    "rarity": "epic",
-    "keywords": [
-      "Anime",
-      "Demon"
-    ],
-    "creatorName": "Mazario Studios",
-    "offerId": "960adce7-ee38-4ab2-bb00-1f14ec7c13f9",
-    "price": 240,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-11T02:31:14.315Z",
-    "creationDate": "2023-10-04T18:12:50.793Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_face_accessory",
-    "rating": null
-  },
-  {
     "id": "00987923-db91-4687-a0ca-4ea5ea8e10e8",
     "uuid": "197a5d09-f433-7395-63c4-36cc935430ed",
     "title": "Armageddon Arms",
@@ -164822,6 +164819,27 @@
     "creationDate": "2026-05-13T14:35:30.778Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_high_pants",
+    "rating": null
+  },
+  {
+    "id": "e150a841-666d-4351-93c5-8aacc53f596f",
+    "uuid": "bb4eb774-1f94-ee45-76cd-17cebd6467a4",
+    "title": "Demon Lord Mask",
+    "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/c54e3771-41d4-47d9-9423-9d804055a2b6/demon_lord_mask_Thumbnail_0.png",
+    "rarity": "epic",
+    "keywords": [
+      "Anime",
+      "Demon"
+    ],
+    "creatorName": "Mazario Studios",
+    "offerId": "960adce7-ee38-4ab2-bb00-1f14ec7c13f9",
+    "price": 240,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-11T02:31:14.315Z",
+    "creationDate": "2023-10-04T18:12:50.793Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_face_accessory",
     "rating": null
   },
   {
@@ -192415,24 +192433,6 @@
     "creationDate": "2025-11-07T16:03:31.341Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_hood",
-    "rating": null
-  },
-  {
-    "id": "8bbc3395-6802-4c1b-acd9-c4465e8299fd",
-    "uuid": "92d64f73-76ed-5bae-83e3-0377171f3b54",
-    "title": "Dusty Blue Gradient Blouse",
-    "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/100375de-d393-44be-a4c3-ced2872e10c6/NovaEGG_GradientDustyBlueBlouse_Thumbnail_0.png",
-    "rarity": "common",
-    "keywords": [],
-    "creatorName": "NovaEGG",
-    "offerId": "469576d2-9c37-4313-b3cf-220ff9784bfe",
-    "price": 70,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-11T05:09:16.961Z",
-    "creationDate": "2025-08-11T14:49:33.262Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_top",
     "rating": null
   },
   {
