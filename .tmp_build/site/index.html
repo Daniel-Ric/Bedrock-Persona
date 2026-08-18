@@ -3,68 +3,134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Persona Assets</title>
+  <meta name="theme-color" content="#171418" />
+  <meta name="description" content="Browse and inspect Minecraft Bedrock persona assets." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23211d21'/%3E%3Cpath d='M8 8h16v16H8z' fill='none' stroke='%23aaa0aa'/%3E%3Cpath d='M11 20V12h3.5c2 0 3 1 3 2.7s-1 2.8-3 2.8H13V20zm2-4.3h1.3c.8 0 1.2-.3 1.2-1s-.4-.9-1.2-.9H13zM18 20l2.5-8h2l2.5 8h-2l-.4-1.6h-2.4l-.4 1.6zm2.6-3.2h1.6l-.8-2.9z' fill='%23dedade'/%3E%3C/svg%3E" />
+  <title>Persona Archive</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mauve: {
+              50: "#f8f7f8", 100: "#eeecef", 200: "#dedade", 300: "#c8c1c8",
+              400: "#aaa0aa", 500: "#8e818e", 600: "#756975", 700: "#5d545d",
+              800: "#493f49", 850: "#342e34", 900: "#2a252a", 925: "#211d21",
+              950: "#171418"
+            }
+          },
+          fontFamily: { sans: ["Segoe UI", "Helvetica Neue", "Arial", "sans-serif"] }
+        }
+      }
+    };
+  </script>
+  <style>
+    [hidden] { display: none !important; }
+    html { scrollbar-color: #5d545d #171418; }
+    body { text-rendering: optimizeLegibility; }
+    select { color-scheme: dark; }
+    dialog::backdrop { background: rgb(10 8 10 / 78%); }
+    .asset-grid[data-view="list"] { grid-template-columns: minmax(0, 1fr); }
+    .asset-grid[data-view="list"] .asset-card { display: grid; grid-template-columns: 9rem minmax(0, 1fr); }
+    .asset-grid[data-view="list"] .asset-image { aspect-ratio: 1 / 1; height: 100%; }
+    @media (min-width: 768px) {
+      .asset-grid[data-view="list"] .asset-card { grid-template-columns: 11rem minmax(0, 1fr); }
+      .asset-grid[data-view="list"] .asset-body { display: grid; grid-template-columns: minmax(12rem, 1.2fr) minmax(15rem, 1fr) auto; align-items: center; gap: 1.5rem; }
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
-  <div class="relative overflow-hidden">
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b,transparent_55%)]"></div>
-    <div class="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10">
-      <header class="flex flex-col gap-6 rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6 shadow-xl shadow-slate-950/40 backdrop-blur">
-        <div class="flex flex-wrap items-start justify-between gap-6">
+<body class="min-h-screen bg-mauve-950 font-sans text-mauve-100 antialiased selection:bg-mauve-600 selection:text-white">
+  <header class="border-b border-mauve-800 bg-mauve-925">
+    <div class="mx-auto flex w-full max-w-[1920px] flex-col gap-5 px-4 py-5 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-start justify-between gap-5">
+        <div class="flex items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center border border-mauve-700 bg-mauve-900 text-sm font-bold text-mauve-200" aria-hidden="true">PA</div>
           <div>
-            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Minecraft Bedrock</p>
-            <h1 class="mt-2 text-3xl font-semibold text-white">Persona Assets</h1>
-            <p class="mt-2 text-sm text-slate-400"><span id="updatedAt">Updated: —</span> • <span id="counts">—</span></p>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="rounded-full border border-indigo-400/40 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-100" id="count">—</span>
-            <a class="inline-flex items-center gap-2 rounded-full border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400/70 hover:text-white" href="./data/persona_emote/items.json" target="_blank" rel="noreferrer">Emotes JSON</a>
-            <a class="inline-flex items-center gap-2 rounded-full border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400/70 hover:text-white" href="./data/persona_piece/items.json" target="_blank" rel="noreferrer">Pieces JSON</a>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-mauve-400">Minecraft Bedrock</p>
+            <h1 class="mt-0.5 text-xl font-semibold tracking-tight text-mauve-50 sm:text-2xl">Persona Archive</h1>
           </div>
         </div>
-      </header>
-
-      <section class="rounded-3xl border border-slate-800/70 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/40 backdrop-blur">
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
-          <input id="q" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400/70 focus:outline-none xl:col-span-2" placeholder="Search title, uuid, creator, keywords..." />
-          <select id="type" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
-            <option value="all">All types</option>
-            <option value="persona_emote">persona_emote</option>
-            <option value="persona_piece">persona_piece</option>
-          </select>
-          <select id="rarity" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none"></select>
-          <select id="creator" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none"></select>
-          <select id="purchasable" class="h-12 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
-            <option value="all">Purchasable: any</option>
-            <option value="true">Purchasable: yes</option>
-            <option value="false">Purchasable: no</option>
-          </select>
+        <nav class="flex flex-wrap items-center gap-2" aria-label="Data downloads">
+          <a class="inline-flex h-9 items-center border border-mauve-700 px-3 text-xs font-semibold text-mauve-200 transition-colors hover:border-mauve-500 hover:bg-mauve-850 focus:outline-none focus:ring-2 focus:ring-mauve-400" href="./data/persona_emote/items.json" target="_blank" rel="noreferrer">Emotes JSON <span class="ml-2 text-mauve-500" aria-hidden="true">↗</span></a>
+          <a class="inline-flex h-9 items-center border border-mauve-700 px-3 text-xs font-semibold text-mauve-200 transition-colors hover:border-mauve-500 hover:bg-mauve-850 focus:outline-none focus:ring-2 focus:ring-mauve-400" href="./data/persona_piece/items.json" target="_blank" rel="noreferrer">Pieces JSON <span class="ml-2 text-mauve-500" aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+      <div class="grid border-y border-mauve-800 sm:grid-cols-3">
+        <div class="py-3 sm:border-r sm:border-mauve-800 sm:pr-5">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-mauve-500">Catalog size</p>
+          <p id="totalCount" class="mt-1 text-sm font-semibold tabular-nums text-mauve-100">—</p>
         </div>
-
-        <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
-          <p class="text-xs text-slate-400">Tip: sort by last modified to catch new updates quickly.</p>
-          <div class="w-full sm:w-72">
-            <select id="sort" class="h-12 w-full rounded-2xl border border-slate-800 bg-slate-950/60 px-4 text-sm text-white focus:border-indigo-400/70 focus:outline-none">
-              <option value="title_asc">Sort: Title (A→Z)</option>
-              <option value="title_desc">Sort: Title (Z→A)</option>
-              <option value="modified_desc">Sort: LastModifiedDate (newest)</option>
-              <option value="start_desc">Sort: StartDate (newest)</option>
-              <option value="price_asc">Sort: Price (low→high)</option>
-              <option value="price_desc">Sort: Price (high→low)</option>
-            </select>
-          </div>
+        <div class="border-t border-mauve-800 py-3 sm:border-r sm:border-t-0 sm:px-5">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-mauve-500">Asset split</p>
+          <p id="counts" class="mt-1 text-sm text-mauve-300">—</p>
         </div>
-
-        <div id="grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
-
-        <div class="mt-6 flex flex-wrap justify-between gap-3 text-xs text-slate-400">
-          <span>Data source: PlayFab Economy v2 Catalog/Search</span>
-          <span>UI shows up to 2000 results — use filters to narrow.</span>
+        <div class="border-t border-mauve-800 py-3 sm:border-t-0 sm:pl-5">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-mauve-500">Last indexed</p>
+          <p id="updatedAt" class="mt-1 text-sm text-mauve-300">—</p>
         </div>
-      </section>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-[1920px] px-4 py-5 sm:px-6 lg:px-8 lg:py-7">
+    <section aria-labelledby="catalog-heading">
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-mauve-500">Catalog browser</p>
+          <h2 id="catalog-heading" class="mt-1 text-lg font-semibold text-mauve-50">Find an asset</h2>
+        </div>
+        <p class="text-xs text-mauve-500"><kbd class="border border-mauve-700 bg-mauve-900 px-1.5 py-0.5 font-sans text-[10px] text-mauve-300">/</kbd> focuses search</p>
+      </div>
+
+      <div class="border border-mauve-800 bg-mauve-925">
+        <div class="grid gap-3 border-b border-mauve-800 p-3 sm:p-4 md:grid-cols-2 xl:grid-cols-12">
+          <label class="relative md:col-span-2 xl:col-span-4">
+            <span class="sr-only">Search assets</span>
+            <svg class="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-mauve-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+            <input id="q" class="h-11 w-full border border-mauve-700 bg-mauve-950 pl-10 pr-10 text-sm text-mauve-50 outline-none transition-colors placeholder:text-mauve-600 focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400" type="search" autocomplete="off" placeholder="Title, UUID, creator, keyword…" />
+            <button id="clearSearch" type="button" class="absolute right-2 top-2 grid h-7 w-7 place-items-center text-mauve-500 hover:text-mauve-200 focus:outline-none focus:ring-2 focus:ring-mauve-400" aria-label="Clear search" hidden>×</button>
+          </label>
+          <label class="xl:col-span-2">
+            <span class="sr-only">Asset type</span>
+            <select id="type" class="h-11 w-full border border-mauve-700 bg-mauve-950 px-3 text-sm text-mauve-200 outline-none focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400">
+              <option value="all">All asset types</option>
+              <option value="persona_emote">Emotes</option>
+              <option value="persona_piece">Persona pieces</option>
+            </select>
+          </label>
+          <label class="xl:col-span-2"><span class="sr-only">Rarity</span><select id="rarity" class="h-11 w-full border border-mauve-700 bg-mauve-950 px-3 text-sm text-mauve-200 outline-none focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400"></select></label>
+          <label class="xl:col-span-2"><span class="sr-only">Creator</span><select id="creator" class="h-11 w-full border border-mauve-700 bg-mauve-950 px-3 text-sm text-mauve-200 outline-none focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400"></select></label>
+          <label class="xl:col-span-2"><span class="sr-only">Purchasability</span><select id="purchasable" class="h-11 w-full border border-mauve-700 bg-mauve-950 px-3 text-sm text-mauve-200 outline-none focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400"><option value="all">Any availability</option><option value="true">Purchasable</option><option value="false">Not purchasable</option></select></label>
+        </div>
+
+        <div class="flex flex-col gap-3 p-3 sm:p-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="flex min-w-0 flex-wrap items-center gap-2">
+            <p id="resultSummary" class="mr-2 text-sm font-semibold text-mauve-100" aria-live="polite">Loading catalog…</p>
+            <button id="favoritesOnly" type="button" class="h-9 border border-mauve-700 px-3 text-xs font-semibold text-mauve-300 transition-colors hover:bg-mauve-850 focus:outline-none focus:ring-2 focus:ring-mauve-400" aria-pressed="false">Saved <span id="favoriteCount" class="ml-1 tabular-nums text-mauve-500">0</span></button>
+            <button id="resetFilters" type="button" class="h-9 px-2 text-xs font-semibold text-mauve-400 transition-colors hover:text-mauve-100 focus:outline-none focus:ring-2 focus:ring-mauve-400" hidden>Reset filters</button>
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="min-w-0 flex-1 sm:w-64 sm:flex-none"><span class="sr-only">Sort assets</span><select id="sort" class="h-9 w-full border border-mauve-700 bg-mauve-950 px-3 text-xs font-semibold text-mauve-200 outline-none focus:border-mauve-400 focus:ring-1 focus:ring-mauve-400"><option value="title_asc">Title · A–Z</option><option value="title_desc">Title · Z–A</option><option value="modified_desc">Recently modified</option><option value="start_desc">Recently released</option><option value="price_asc">Price · low to high</option><option value="price_desc">Price · high to low</option></select></label>
+            <div class="flex border border-mauve-700" aria-label="View options">
+              <button id="gridView" type="button" class="grid h-9 w-10 place-items-center bg-mauve-700 text-mauve-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mauve-400" aria-label="Grid view" aria-pressed="true"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="6" height="6"></rect><rect x="14" y="4" width="6" height="6"></rect><rect x="4" y="14" width="6" height="6"></rect><rect x="14" y="14" width="6" height="6"></rect></svg></button>
+              <button id="listView" type="button" class="grid h-9 w-10 place-items-center border-l border-mauve-700 text-mauve-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mauve-400" aria-label="List view" aria-pressed="false"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grid" class="asset-grid mt-4 grid grid-cols-1 gap-px overflow-hidden border border-mauve-800 bg-mauve-800 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5" data-view="grid"></div>
+      <div id="loadMoreWrap" class="mt-5 text-center" hidden><button id="loadMore" type="button" class="h-10 border border-mauve-700 bg-mauve-925 px-5 text-sm font-semibold text-mauve-200 transition-colors hover:border-mauve-500 hover:bg-mauve-850 focus:outline-none focus:ring-2 focus:ring-mauve-400">Load more</button><p id="showingCount" class="mt-2 text-xs tabular-nums text-mauve-500"></p></div>
+
+      <footer class="mt-8 flex flex-col justify-between gap-2 border-t border-mauve-800 pt-4 text-xs text-mauve-500 sm:flex-row"><span>PlayFab Economy v2 · Catalog/Search</span><span>Filters are saved in the page URL</span></footer>
+    </section>
+  </main>
+
+  <dialog id="detailDialog" class="m-auto max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-3xl overflow-auto border border-mauve-700 bg-mauve-925 p-0 text-mauve-100 shadow-2xl shadow-black/60 focus:outline-none">
+    <div id="detailContent"></div>
+  </dialog>
+  <div id="toast" class="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 border border-mauve-600 bg-mauve-100 px-3 py-2 text-xs font-semibold text-mauve-950 shadow-lg" role="status" aria-live="polite" hidden></div>
 
   <script src="./app.js"></script>
 </body>
