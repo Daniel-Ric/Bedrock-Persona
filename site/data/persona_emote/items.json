@@ -27492,6 +27492,24 @@
     "rating": null
   },
   {
+    "id": "57aa0d4d-e56b-4eaf-90e9-d4703d502b73",
+    "uuid": "d9de3e45-2161-98d3-c88c-6963c8619e56",
+    "title": "Okay!",
+    "image": "https://content2.prod.catalog.playfab.com/pf-namespace-b63a0803d3653643/79cbc5fe-5675-4026-be17-f98575fc2ffd/yes_emote_thumbnail_0.png",
+    "rarity": "common",
+    "keywords": [],
+    "creatorName": "Kubo Studios",
+    "offerId": "9025381f-9a95-4c55-a35d-6f54bfbadf74",
+    "price": 160,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-09-02T18:03:11.781Z",
+    "creationDate": "2026-09-02T18:00:35.52Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "76afb336-ec16-4fb3-9bcf-3552991658e1",
     "uuid": "fced8dcb-6818-f2c0-45c1-dd7b36641fef",
     "title": "On Your Mark",
