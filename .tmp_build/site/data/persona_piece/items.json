@@ -13672,6 +13672,33 @@
     "rating": null
   },
   {
+    "id": "babc16cd-ac9b-43a6-a030-75c2267ac4f2",
+    "uuid": "f0a331f0-72e7-19a1-5ac7-f9deb182c4ff",
+    "title": "Black Wireframe Wings",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/a42c5d24-d8b4-43e9-ad46-1cc9904f20e1/black_wireframe_wings_Thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [
+      "Abstract",
+      "Art",
+      "Black",
+      "Funny",
+      "Meme",
+      "Stylized",
+      "Wings",
+      "Tech"
+    ],
+    "creatorName": "Jigarbov Productions",
+    "offerId": "a83b4914-d2cf-47df-bda4-ac5e9abaae93",
+    "price": 240,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-10T22:05:18.064Z",
+    "creationDate": "2021-06-24T17:42:43.556Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_back",
+    "rating": null
+  },
+  {
     "id": "50bea2cf-e368-4a24-8058-2ac717933a6d",
     "uuid": "41fa8733-67a4-773d-1879-60e110b56872",
     "title": "Black Wolf Animatronic",
@@ -81604,31 +81631,6 @@
     "rating": null
   },
   {
-    "id": "534d58f9-03a8-4ef3-a647-25eec260f95c",
-    "uuid": "0eb0f272-0665-d9a8-8d27-4b9fdcde1f4a",
-    "title": "Cool Anime Suit",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/b1c2c8fd-6138-4f97-8483-000c10fc26c3/cool_anime_suit_Thumbnail_0.png",
-    "rarity": "epic",
-    "keywords": [
-      "Cool",
-      "Anime",
-      "Teen",
-      "Epic",
-      "Animated",
-      "Colorful"
-    ],
-    "creatorName": "Teplight",
-    "offerId": "1bc43021-8ad6-4192-8191-95824a8471d0",
-    "price": 400,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-11T02:23:12.515Z",
-    "creationDate": "2023-05-31T15:19:45.821Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_outerwear",
-    "rating": null
-  },
-  {
     "id": "528e19b6-552e-4175-9dd9-a3cc3d4e4058",
     "uuid": "fed78da9-f283-41e7-3591-618ea8ba493e",
     "title": "Animal Swap",
@@ -88706,6 +88708,31 @@
     "creationDate": "2025-01-16T18:55:40.375Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_back",
+    "rating": null
+  },
+  {
+    "id": "534d58f9-03a8-4ef3-a647-25eec260f95c",
+    "uuid": "0eb0f272-0665-d9a8-8d27-4b9fdcde1f4a",
+    "title": "Cool Anime Suit",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/b1c2c8fd-6138-4f97-8483-000c10fc26c3/cool_anime_suit_Thumbnail_0.png",
+    "rarity": "epic",
+    "keywords": [
+      "Cool",
+      "Anime",
+      "Teen",
+      "Epic",
+      "Animated",
+      "Colorful"
+    ],
+    "creatorName": "Teplight",
+    "offerId": "1bc43021-8ad6-4192-8191-95824a8471d0",
+    "price": 400,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-06-11T02:23:12.515Z",
+    "creationDate": "2023-05-31T15:19:45.821Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_outerwear",
     "rating": null
   },
   {
@@ -157972,31 +157999,6 @@
     "rating": null
   },
   {
-    "id": "4ffe4405-efc8-45b4-a331-324b651e7641",
-    "uuid": "b9774262-a37a-64d2-1ea5-e0f08ad590c7",
-    "title": "Dark Vulcan Pants",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/eaf7c283-ab1d-48cb-ac43-fe5896eb9e8c/dark_vulcan_pants_Thumbnail_0.png",
-    "rarity": "epic",
-    "keywords": [
-      "Anime",
-      "Fantasy",
-      "Fire",
-      "Lava",
-      "Magic",
-      "Dark"
-    ],
-    "creatorName": "Mazario Studios",
-    "offerId": "227c3d06-193d-448d-b7fb-ab14c03ecb9e",
-    "price": 240,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-11T05:09:02.045Z",
-    "creationDate": "2025-08-18T14:52:29.472Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_dress",
-    "rating": null
-  },
-  {
     "id": "acc37ec5-1eab-43a2-8ac0-d395ad5ac35e",
     "uuid": "3e3353a3-8d79-9d70-c353-bb1759854955",
     "title": "Arcanist Belt",
@@ -162666,6 +162668,24 @@
     "rating": null
   },
   {
+    "id": "f3760a5d-0cac-4839-8dbe-a6f47442b840",
+    "uuid": "b714eea5-bc07-f508-3b67-91669e55696a",
+    "title": "Aurora Cape",
+    "image": "https://content2.prod.catalog.playfab.com/pf-namespace-b63a0803d3653643/f63769ee-815e-43fa-8ebb-f1df69f08f65/aurora_cape_Thumbnail_0.png",
+    "rarity": "legendary",
+    "keywords": [],
+    "creatorName": "Minecraft",
+    "offerId": "4dcbb9e1-a656-4933-b8da-0a9b768a0e4c",
+    "price": null,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-09-28T20:19:22.485Z",
+    "creationDate": "2026-09-17T17:07:37.212Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_capes",
+    "rating": null
+  },
+  {
     "id": "d5ccfa55-4d20-4184-8e7c-bf289165abd2",
     "uuid": "d50fbc90-14f6-168e-92ca-6a8b5b52e82c",
     "title": "Aurora Dress",
@@ -164728,27 +164748,28 @@
     "rating": null
   },
   {
-    "id": "97e4419a-4ea5-4076-a254-e2280ae6dbc8",
-    "uuid": "3c7e2501-1ed3-76f9-cb43-8c3c98bdfcd9",
-    "title": "Axolotl Hoodie",
-    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/0a656778-312c-4a5b-a60a-cb22197fe492/axolotl_hoodie_outerwear_Thumbnail_0.png",
-    "rarity": "uncommon",
+    "id": "4ffe4405-efc8-45b4-a331-324b651e7641",
+    "uuid": "b9774262-a37a-64d2-1ea5-e0f08ad590c7",
+    "title": "Dark Vulcan Pants",
+    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/eaf7c283-ab1d-48cb-ac43-fe5896eb9e8c/dark_vulcan_pants_Thumbnail_0.png",
+    "rarity": "epic",
     "keywords": [
-      "Mobs",
-      "Pink",
-      "Cute",
-      "Teen",
-      "Casual"
+      "Anime",
+      "Fantasy",
+      "Fire",
+      "Lava",
+      "Magic",
+      "Dark"
     ],
-    "creatorName": "Ninja Squirrel Gaming",
-    "offerId": "1337d67b-84d2-4ee1-abc8-a1b4e560c7e1",
-    "price": 140,
+    "creatorName": "Mazario Studios",
+    "offerId": "227c3d06-193d-448d-b7fb-ab14c03ecb9e",
+    "price": 240,
     "purchasable": null,
     "startDate": null,
-    "lastModifiedDate": "2026-06-10T22:10:47.713Z",
-    "creationDate": "2021-08-26T01:39:18.791Z",
+    "lastModifiedDate": "2026-06-11T05:09:02.045Z",
+    "creationDate": "2025-08-18T14:52:29.472Z",
     "contentType": "PersonaDurable",
-    "pieceType": "persona_hood",
+    "pieceType": "persona_dress",
     "rating": null
   },
   {
@@ -192619,26 +192640,27 @@
     "rating": null
   },
   {
-    "id": "5230301a-d0c3-4b6f-973b-124497ec6047",
-    "uuid": "ed996e63-e024-2840-128f-bca5785b8a1b",
-    "title": "Dragon Wings",
-    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/6c72d828-4e0c-4263-bdef-9ae265a9ac48/dragon_wings_Thumbnail_0.png",
-    "rarity": "epic",
+    "id": "97e4419a-4ea5-4076-a254-e2280ae6dbc8",
+    "uuid": "3c7e2501-1ed3-76f9-cb43-8c3c98bdfcd9",
+    "title": "Axolotl Hoodie",
+    "image": "https://xforgeassets002.xboxlive.com/pf-title-b63a0803d3653643-20ca2/0a656778-312c-4a5b-a60a-cb22197fe492/axolotl_hoodie_outerwear_Thumbnail_0.png",
+    "rarity": "uncommon",
     "keywords": [
-      "Animated",
-      "Character Customization",
-      "Dragon",
-      "Wings"
+      "Mobs",
+      "Pink",
+      "Cute",
+      "Teen",
+      "Casual"
     ],
-    "creatorName": "MobBlocks",
-    "offerId": "9e3191f0-f3e3-481b-90f8-3b3d19a524d9",
-    "price": 400,
+    "creatorName": "Ninja Squirrel Gaming",
+    "offerId": "1337d67b-84d2-4ee1-abc8-a1b4e560c7e1",
+    "price": 140,
     "purchasable": null,
     "startDate": null,
-    "lastModifiedDate": "2026-06-10T23:32:50.187Z",
-    "creationDate": "2022-02-25T19:49:12.583Z",
+    "lastModifiedDate": "2026-06-10T22:10:47.713Z",
+    "creationDate": "2021-08-26T01:39:18.791Z",
     "contentType": "PersonaDurable",
-    "pieceType": "persona_back",
+    "pieceType": "persona_hood",
     "rating": null
   },
   {
@@ -234092,33 +234114,6 @@
     "creationDate": "2021-06-25T16:19:28.604Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_legs",
-    "rating": null
-  },
-  {
-    "id": "babc16cd-ac9b-43a6-a030-75c2267ac4f2",
-    "uuid": "f0a331f0-72e7-19a1-5ac7-f9deb182c4ff",
-    "title": "Black Wireframe Wings",
-    "image": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/a42c5d24-d8b4-43e9-ad46-1cc9904f20e1/black_wireframe_wings_Thumbnail_0.png",
-    "rarity": "rare",
-    "keywords": [
-      "Abstract",
-      "Art",
-      "Black",
-      "Funny",
-      "Meme",
-      "Stylized",
-      "Wings",
-      "Tech"
-    ],
-    "creatorName": "Jigarbov Productions",
-    "offerId": "a83b4914-d2cf-47df-bda4-ac5e9abaae93",
-    "price": 240,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-10T22:05:18.064Z",
-    "creationDate": "2021-06-24T17:42:43.556Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_back",
     "rating": null
   }
 ]
