@@ -171082,6 +171082,24 @@
     "rating": null
   },
   {
+    "id": "e53c7c37-3e49-4d4b-a3f9-6728e16a301e",
+    "uuid": "a80ffff9-049a-0e01-5150-41e02b34f1a4",
+    "title": "Deluxe Shelf Cap",
+    "image": "https://content2.prod.catalog.playfab.com/pf-namespace-b63a0803d3653643/98c91a7f-d115-4a29-b38e-e7e118a1bfef/Shelf_Cap_Thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [],
+    "creatorName": "Minecraft",
+    "offerId": "6df0b820-2a9e-4685-9403-6a40ff811d75",
+    "price": 0,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-09-29T21:37:34.808Z",
+    "creationDate": "2026-09-29T21:33:38.017Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_head",
+    "rating": null
+  },
+  {
     "id": "2efe4902-862c-417f-865e-7b095828a979",
     "uuid": "adea1177-a602-4264-a044-934efae0cecf",
     "title": "Delver's Boots",
@@ -192609,32 +192627,6 @@
     "startDate": null,
     "lastModifiedDate": "2026-06-10T22:08:36.964Z",
     "creationDate": "2021-03-10T19:24:34.785Z",
-    "contentType": "PersonaDurable",
-    "pieceType": "persona_back",
-    "rating": null
-  },
-  {
-    "id": "45aed430-02da-4963-b0c6-cad1221c0808",
-    "uuid": "8a1e2bd8-ae5b-d1fe-27de-f672f4621fda",
-    "title": "Dragon Wings",
-    "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/0d09d5ed-4345-4ff3-b9c9-f18d7d0b78ea/dragon_wings_Thumbnail_0.png",
-    "rarity": "epic",
-    "keywords": [
-      "Animated",
-      "Animation",
-      "Cool",
-      "Dragons",
-      "Epic",
-      "Fire",
-      "Boss Fights"
-    ],
-    "creatorName": "Foxel Games",
-    "offerId": "5e2b72ba-18fb-4b32-a7f2-365f0e56848b",
-    "price": 400,
-    "purchasable": null,
-    "startDate": null,
-    "lastModifiedDate": "2026-06-11T05:14:59.057Z",
-    "creationDate": "2026-01-12T13:51:34.126Z",
     "contentType": "PersonaDurable",
     "pieceType": "persona_back",
     "rating": null
