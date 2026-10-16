@@ -2568,6 +2568,24 @@
     "rating": null
   },
   {
+    "id": "c5632e68-12bc-4d0a-b642-9cf4e2f49cd4",
+    "uuid": "6061b2b8-3397-ecb8-b6ff-b8c8c8257eb1",
+    "title": "Avatar State",
+    "image": "https://content2.prod.catalog.playfab.com/pf-namespace-b63a0803d3653643/f8bbf1e8-2e4d-4469-b4a8-2cf974add16f/em_gm1_avatar_state_thumbnail_0.png",
+    "rarity": "rare",
+    "keywords": [],
+    "creatorName": "Gamemode One",
+    "offerId": "ece40ac6-8885-4d5e-b2a4-49684058d2b6",
+    "price": 660,
+    "purchasable": true,
+    "startDate": null,
+    "lastModifiedDate": "2026-10-16T09:49:12.583Z",
+    "creationDate": "2026-10-16T09:42:25.363Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "5b2b578c-b355-4b9d-a8c8-b0996a7189e6",
     "uuid": "1e137be8-8c5a-c880-e65e-8e98548d5b51",
     "title": "Awesome Flip",
