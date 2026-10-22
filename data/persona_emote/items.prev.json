@@ -22084,6 +22084,30 @@
     "rating": null
   },
   {
+    "id": "5c2dfaa0-2c4d-437d-9825-9f78e0e70f9a",
+    "uuid": "d91ecd0b-3e47-be14-c20e-dc1c98719f4b",
+    "title": "Infinity Spin",
+    "image": "https://content2.prod.catalog.playfab.com/pf-namespace-b63a0803d3653643/064ffd64-b4ce-4a3f-8608-d85cddd308a9/em_infinity_spin_thumbnail_0.png",
+    "rarity": "uncommon",
+    "keywords": [
+      "Cool",
+      "Dance",
+      "Epic",
+      "Meme",
+      "Trendy"
+    ],
+    "creatorName": "Cypress Games",
+    "offerId": "552d482b-79bb-4c9a-a5ce-ccd1e709ee1c",
+    "price": 310,
+    "purchasable": null,
+    "startDate": null,
+    "lastModifiedDate": "2026-10-22T15:03:40.413Z",
+    "creationDate": "2026-10-22T13:55:30.22Z",
+    "contentType": "PersonaDurable",
+    "pieceType": "persona_emote",
+    "rating": null
+  },
+  {
     "id": "4a4b6eda-9bcd-473a-99e8-9f5113d76ff1",
     "uuid": "f31cea6b-4a5d-2a1e-a9ed-18ade918d1ae",
     "title": "Infinity Trapdoor",
