@@ -16,8 +16,7 @@ This repository automatically mirrors Minecraft Bedrock Persona catalog entries 
 
 ## Schedule
 
-- Checks for Marketplace changes at most once every 5 days; full data is fetched only when changes are found.
-- GitHub Actions runs daily and on push; checks are skipped until 5 days have elapsed.
+- Checks for Marketplace changes every Tuesday at 22:00 German time; full data is fetched only when changes are found.
 - Last update (UTC): 2026-11-05T20:12:20Z
 
 ## Current counts

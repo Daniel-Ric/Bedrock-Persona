@@ -42,8 +42,7 @@ build_readme() {
     echo
     echo "## Schedule"
     echo
-    echo "- Checks for Marketplace changes at most once every 5 days; full data is fetched only when changes are found."
-    echo "- GitHub Actions runs daily and on push; checks are skipped until 5 days have elapsed."
+    echo "- Checks for Marketplace changes every Tuesday at 22:00 German time; full data is fetched only when changes are found."
     echo "- Last update (UTC): ${updated_at}"
     echo
     echo "## Current counts"

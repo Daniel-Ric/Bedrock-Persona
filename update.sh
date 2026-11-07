@@ -7,7 +7,7 @@ SCRIPT_DIR="${ROOT_DIR}/scripts"
 source "${SCRIPT_DIR}/env.sh"
 
 LAST_CHECKED="$(jq -sr '[.[] | .lastCheckedAt // .updatedAt // empty] | max // ""' "${STATE_DIR}"/*.json 2>/dev/null || true)"
-if [ -n "${LAST_CHECKED}" ] && [ "$(( $(date -u +%s) - $(date -u -d "${LAST_CHECKED}" +%s) ))" -lt 432000 ]; then
+if [ -n "${LAST_CHECKED}" ] && [ "$(( $(date -u +%s) - $(date -u -d "${LAST_CHECKED}" +%s) ))" -lt 604800 ]; then
   exit 0
 fi
 
