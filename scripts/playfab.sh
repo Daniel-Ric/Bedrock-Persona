@@ -153,22 +153,28 @@ fetch_all() {
   local quick_ok="false"
   if [ -n "${last_seen_modified}" ]; then
     local quick_res
-    quick_res="$(safe_filter_try "${base_filter}" "LastModifiedDate gt '${last_seen_modified}'" "LastModifiedDate desc" 0 1 || true)"
-    if echo "${quick_res}" | jq -e '(.data.Items // []) | length >= 0' >/dev/null 2>&1; then
+    quick_res="$(safe_filter_try "${base_filter}" "LastModifiedDate gt '${last_seen_modified}'" "LastModifiedDate desc" 0 1)" || return 2
+    if echo "${quick_res}" | jq -e '.data.Items | type == "array"' >/dev/null 2>&1; then
       if [ "$(echo "${quick_res}" | jq -r '(.data.Items // []) | length')" -eq 0 ]; then
         quick_ok="true"
       fi
+    else
+      return 2
     fi
   fi
 
   if [ "${quick_ok}" = "true" ] && [ -n "${last_seen_start}" ]; then
     local quick_res
-    quick_res="$(safe_filter_try "${base_filter}" "StartDate gt '${last_seen_start}'" "StartDate desc" 0 1 || true)"
-    if echo "${quick_res}" | jq -e '(.data.Items // []) | length >= 0' >/dev/null 2>&1; then
+    quick_res="$(safe_filter_try "${base_filter}" "StartDate gt '${last_seen_start}'" "StartDate desc" 0 1)" || return 2
+    if echo "${quick_res}" | jq -e '.data.Items | type == "array"' >/dev/null 2>&1; then
       if [ "$(echo "${quick_res}" | jq -r '(.data.Items // []) | length')" -eq 0 ]; then
         return 1
       fi
+    else
+      return 2
     fi
+  elif [ "${quick_ok}" = "true" ] && [ -f "${out_dir}/items.json" ]; then
+    return 1
   fi
 
   local tmpdir
